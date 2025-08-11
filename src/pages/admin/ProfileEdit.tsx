@@ -123,7 +123,9 @@ export default function EditProfile() {
       className="absolute -top-2 -right-2 rounded-md cursor-pointer shadow-md"
       title="Change photo"
     >
-          <FiEdit size={20} color="#333" />
+       <FiEdit size={21} className="text-green-800" />
+
+
     </label>
   </div>
 </div>
