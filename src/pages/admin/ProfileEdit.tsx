@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { FiEdit } from "react-icons/fi";
 interface ProfileData {
   firstName: string;
   lastName: string;
@@ -80,55 +80,53 @@ export default function EditProfile() {
   };
 
   return (
-    <div
-      className="min-h-screen px-4 py-6 flex justify-center bg-gray-50"
-    >
-      <div className="w-full max-w-4xl">
-        {/* Header */}
-        <div className="flex max-w-1.5 -ml-48 gap-1 mb-4">
+    <div className="min-h-screen px-4 py-6 flex justify-center bg-gray-50">
+    <div className="w-full max-w-4xl lg:max-w-none">
+    <div className="flex items-center m mb-10 gap-2 justify-start sm:justify-star">
           <button
             onClick={() => navigate('/admin/profile')}
-            className="text-green-700 hover:text-green-800"
+            className="text-green-700 flex-shrink-0 hover:text-green-800"
           >
              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           <h1 className="text-xl font-semibold text-green-800">Edit</h1>
+       
         </div>
+ <div className="flex mb-8">
+  <div className="relative">
+    {/* Profile Image */}
+    <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-pink-400 to-red-500 flex items-center justify-center overflow-hidden">
+      <img
+        src={
+          profile.photo ||
+          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face'
+        }
+        alt="Profile"
+        className="w-full h-full object-cover"
+      />
+    </div>
 
-        {/* Profile Picture */}
-        <div className="flex mb-8  ">
-          <div className="relative">
-            <div className="w-29 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-gradient-to-br  flex items-center justify-center overflow-hidden">
-              <img
-                src={
-                  profile.photo ||
-                  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face'
-                }
-                alt="Profile"
-                className="w-full h-full object-cover"
-              />
-            </div>
+    {/* Hidden file input */}
+    <input
+      type="file"
+      id="photoInput"
+      accept="image/*"
+      className="hidden"
+      onChange={handlePhotoChange}
+    />
 
-            <input
-              type="file"
-              id="photoInput"
-              accept="image/*"
-              className="hidden"
-              onChange={handlePhotoChange}
-            />
-            <label
-              htmlFor="photoInput"
-              className="absolute -top-2 -right-2 p-3 "
-              title="Change photo"
-            >
-              ✏
-            </label>
-          </div>
-        </div>
-
-        
+    {/* Icon Label */}
+    <label
+      htmlFor="photoInput"
+      className="absolute -top-2 -right-2 rounded-md cursor-pointer shadow-md"
+      title="Change photo"
+    >
+          <FiEdit size={20} color="#333" />
+    </label>
+  </div>
+</div>
         {/* Title */}
         <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center sm:text-left">Edit Profile</h2>
 
